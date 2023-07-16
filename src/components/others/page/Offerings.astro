@@ -1,0 +1,49 @@
+---
+import OfferingsContentLayout from "./layout/OfferingsContentLayout.astro";
+
+const offeringsData = [
+  {
+    title: "Cookies",
+    body: " A cookie or a biscuit is a baked or cooked snack that is small or large, flat & sweet. We only make them with butter & other necessary ingredients.",
+    image: "/assets/banner-images/cookie-img.jpg",
+    alt: "Cookie Image",
+    class: "intro intro-cookies",
+  },
+  {
+    title: "Cake",
+    body: "A cake is essential when it comes to celebrations. It adds more happiness to the occasion & makes a perfect gift to warm the heart of the celebrant.No matter what occasion you're celebrating, a cake is something you shouldn't miss.",
+    image: "/assets/banner-images/cake-img.jpg",
+    alt: "Cake Image",
+    class: "intro intro-cake",
+  },
+  {
+    title: "Brownies",
+    body: " Brownies have the right crunch, great texture & tempting aroma. Chocolate brownies prove to be a great super choice that can be eaten without any guilt!. Give them a try...",
+    image: "/assets/banner-images/brownie-img.jpg",
+    alt: "Brownies Image",
+    class: "intro intro-brownies",
+  },
+  {
+    title: "Dessert",
+    body: "Dessert is a way to share a special moment & create a memorable experince. It is the sweet course eaten at the end of a meal. It is an important part of any meal. It satisfies our sweet cravings and create a sense of completion and balance to a meal.",
+    image: "/assets/banner-images/dessert-img.jpg",
+    alt: "Dessert Image",
+    class: "intro intro-desserts",
+  },
+];
+---
+
+{
+  offeringsData.map((data, i) => (
+    <>
+      <OfferingsContentLayout
+        isEven={!(i % 2)}
+        title={data.title}
+        body={data.body}
+        image={data.image}
+        alt={data.alt}
+        classes={data.class}
+      />
+    </>
+  ))
+}

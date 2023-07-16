@@ -1,15 +1,17 @@
 ---
+import Layout from "../layouts/global/MainLayout.astro";
+import Container from "../components/others/MainContainer.astro";
+import Offerings from "../components/others/page/Offerings.astro";
+import "../styles/components/_components.scss";
+
+const seo = {
+  title: "Home",
+  description: "This is the demo homepage.",
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout seo={seo}>
+  <Container>
+    <Offerings />
+  </Container>
+</Layout>

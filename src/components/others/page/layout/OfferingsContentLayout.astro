@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+export interface Props {
+  title: string;
+  body: string;
+  image: string;
+  alt: string;
+  classes: string;
+  isEven: boolean;
+}
+
+const { title, body, image, alt, classes } = Astro.props as Props;
+---
+
+<section class={classes}>
+  <div class="intro-container">
+    <div
+      class:list={[
+        "intro-container__content",
+        Astro.props.isEven && "flex-row-reverse",
+      ]}
+    >
+      <div class="intro-container__content--image">
+        <Image
+          src={image}
+          alt={alt}
+          height="500"
+          width="500"
+          class="intro-img"
+          quality="mid"
+        />
+      </div>
+      <div class="intro-container__content--content">
+        <h1>{title}</h1>
+        <p>{body}</p>
+        <a href="#" target="_blank">
+          <button class="bg-transparent">Read More</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  button {
+    border: none;
+  }
+</style>

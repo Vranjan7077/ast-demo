@@ -1,0 +1,79 @@
+---
+import settings from "../../../data/settings.js";
+export interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  canonicalURL?: URL | string;
+  image?: string;
+}
+
+const title = Astro.props.title || settings.title;
+const description = Astro.props.description || settings.description;
+const keywords = Astro.props.keywords || settings.keywords;
+const canonicalURL =
+  Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
+const image = new URL(Astro.props.image || "./social.png", Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="title" content={title || settings.title} />
+<meta name="description" content={description || settings.description} />
+<meta name="keywords" content={keywords || settings.keywords} />
+<title>{title || settings.title}</title>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+
+<!-- settingsmap -->
+<link rel="settingsmap" href="/settingsmap.xml" />
+<!-- RSS -->
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${settings.name} Blog`}
+  href={`${settings.url}/feed/blog.xml`}
+/>
+<!-- Canonical -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Fontawesome -->
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css"
+/>
+
+<!-- Bootstrap -->
+<link
+  rel="preload"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<noscript>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+    crossorigin="anonymous"
+    type="text/css"
+  />
+</noscript>

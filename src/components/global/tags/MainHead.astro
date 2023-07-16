@@ -1,0 +1,13 @@
+---
+import MetaTag from "../tags/MainHeadTags.astro";
+import type { Props as BaseHeadProps } from "../tags/MainHeadTags.astro";
+export interface Props {
+  seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+---
+
+<head>
+  <MetaTag {...seo} />
+</head>
