@@ -7,9 +7,10 @@ export interface Props {
   alt: string;
   classes: string;
   isEven: boolean;
+  path: string;
 }
 
-const { title, body, image, alt, classes } = Astro.props as Props;
+const { title, body, image, alt, classes, path } = Astro.props as Props;
 ---
 
 <section class={classes}>
@@ -33,7 +34,7 @@ const { title, body, image, alt, classes } = Astro.props as Props;
       <div class="intro-container__content--content">
         <h1>{title}</h1>
         <p>{body}</p>
-        <a href="#" target="_blank">
+        <a href={path} target="_blank">
           <button class="bg-transparent">Read More</button>
         </a>
       </div>

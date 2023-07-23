@@ -1,0 +1,32 @@
+---
+import Layout from "../layouts/global/MainLayout.astro";
+import Container from "../components/others/MainContainer.astro";
+import "../styles/components/_components.scss";
+
+const seo = {
+  title: "Home",
+  description: "This is the demo homepage.",
+};
+
+const getContent = "images";
+
+const getUrl = "https://rainbow-bites-rest-api-images.onrender.com";
+
+const response = await fetch(`${getUrl}/${getContent}`);
+
+const data = await response.json();
+// console.log(data);
+---
+
+<Layout seo={seo}>
+  <Container>
+    {data.map((image) => <img src={`${getUrl}${image.url}`} alt={image.alt} />)}
+  </Container>
+</Layout>
+
+<style>
+  img {
+    height: 100px;
+    width: 100px;
+  }
+</style>

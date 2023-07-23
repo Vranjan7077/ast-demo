@@ -8,5 +8,10 @@ export default defineConfig({
   experimental: {
     assets: true,
   },
-  integrations: [sitemap(), image()],
+  integrations: [
+    sitemap(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
+  ],
 });

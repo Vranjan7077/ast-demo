@@ -1,0 +1,47 @@
+---
+import fs from "node:fs";
+import { Image, Picture } from "@astrojs/image/components";
+const { filename, alt, sizes, width, height, loading, url } = Astro.props;
+
+const imageFormats = [
+  "jpg",
+  "jpeg",
+  "png",
+  "webp",
+  "avif",
+  "tiff",
+  "tif",
+  "gif",
+  "svg",
+];
+
+const imagePath = (filename: string): URL => {
+  if (import.meta.env.PROD) {
+    return new URL(`./images/${filename}`, import.meta.url);
+  }
+  console.log(filename, "filename");
+  return new URL(`../../../public/images/${filename}`, import.meta.url);
+};
+
+const foundImageFormat = imageFormats.find((format: string): boolean => {
+  try {
+    fs.accessSync(imagePath(`.${format}`));
+    return true;
+  } catch {
+    return false;
+  }
+});
+---
+
+{
+  foundImageFormat !== undefined && (
+    <Picture
+      src={`/images/${foundImageFormat}`}
+      loading={loading ? loading : "lazy"}
+      sizes={sizes}
+      alt={alt}
+      width={width}
+      height={height}
+    />
+  )
+}

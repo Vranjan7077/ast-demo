@@ -8,6 +8,7 @@ const offeringsData = [
     image: "/assets/banner-images/cookie-img.jpg",
     alt: "Cookie Image",
     class: "intro intro-cookies",
+    path: "/cookies",
   },
   {
     title: "Cake",
@@ -15,6 +16,7 @@ const offeringsData = [
     image: "/assets/banner-images/cake-img.jpg",
     alt: "Cake Image",
     class: "intro intro-cake",
+    path: "/cakes",
   },
   {
     title: "Brownies",
@@ -22,6 +24,7 @@ const offeringsData = [
     image: "/assets/banner-images/brownie-img.jpg",
     alt: "Brownies Image",
     class: "intro intro-brownies",
+    path: "/brownies",
   },
   {
     title: "Dessert",
@@ -29,6 +32,7 @@ const offeringsData = [
     image: "/assets/banner-images/dessert-img.jpg",
     alt: "Dessert Image",
     class: "intro intro-desserts",
+    path: "/desserts",
   },
 ];
 ---
@@ -43,6 +47,7 @@ const offeringsData = [
         image={data.image}
         alt={data.alt}
         classes={data.class}
+        path={data.path}
       />
     </>
   ))
